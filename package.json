@@ -1,0 +1,29 @@
+{
+  "name": "mock-oidc-server",
+  "version": "0.1.0",
+  "description": "A mock OIDC server to ease impersonation in development and end-to-end testing",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsx watch index.ts",
+    "start": "npx tsx index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierrelemee/mock-oidc-server.git"
+  },
+  "author": "Pierre LEMÉE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pierrelemee/mock-oidc-server/issues"
+  },
+  "homepage": "https://github.com/pierrelemee/mock-oidc-server#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.10"
+  }
+}
