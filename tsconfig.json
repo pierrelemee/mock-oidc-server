@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    "module": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   }
 }

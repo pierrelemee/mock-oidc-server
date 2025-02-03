@@ -7,6 +7,6 @@ export function configuration(req: Request, res: Response) {
         jwks_uri: url('/jwks'),
         authorization_endpoint: url('/authorize'),
         token_endpoint: url('/token'),
-        userinfo_endpoint: url('/authorize'),
+        userinfo_endpoint: url('/userinfo'),
     })
 }

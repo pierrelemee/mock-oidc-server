@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import {users} from "../models/user";
-import {Authentication, codes} from "../models/authentication";
+import {users} from "@/models/user.ts";
+import {Authentication, codes} from "@/models/authentication.ts";
 import {v4 as uuidv4} from 'uuid';
 
 

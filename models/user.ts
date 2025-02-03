@@ -1,3 +1,6 @@
+import * as process from "node:process";
+import * as fs from 'node:fs';
+
 class User {
     protected _title: string;
 
@@ -16,7 +19,7 @@ class User {
     private _data: Map<string, string | boolean | number>;
 
     get data(): Map<string, string | boolean | number> {
-        return this._data;
+        return {...this._data, sub: this._sub};
     }
 
     get description(): string {
@@ -30,22 +33,29 @@ class User {
     }
 }
 
-const users = [
-    {
-        _title: "User 1",
-        sub: 'cace7c82-fb4d-4e8e-a56e-550d5d7b52ee',
-        email: 'user1@example.com',
-    },
-    {
-        _title: "User 2",
-        sub: 'dde1f6b6-7da8-4506-873f-f3ec61e30c20',
-        email: 'user3@example.com',
-    },
-    {
-        _title: "User 3",
-        sub: 'f388bd40-ac17-453e-8980-7a3cf7bf6244',
-        email: 'user3@example.com',
+let data: any;
+
+for (const path of [process.env.USERS, process.cwd() + process.env.USERS]) {
+    if (fs.existsSync(path)) {
+        try {
+            data = JSON.parse(fs.readFileSync(path).toString());
+        } catch (e) {
+        }
     }
-].map((u) => User.from(u));
+}
+
+if (!data) {
+    try {
+        data = JSON.parse(process.env.USERS);
+    } catch (e) {
+    }
+}
+
+if (!data) {
+    throw new Error('Impossible to parse user data');
+}
+
+
+const users = data.map((u) => User.from(u));
 
 export {User, users}
